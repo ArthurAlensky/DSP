@@ -1,0 +1,7 @@
+D:\COSI\BSUIR.Image\BSUIR.Image.Core.Plugin\bin\Debug\BSUIR.Image.Core.Plugin.dll
+D:\COSI\BSUIR.Image\BSUIR.Image.Core.Plugin\bin\Debug\BSUIR.Image.Core.Plugin.pdb
+D:\COSI\BSUIR.Image\BSUIR.Image.Core.Plugin\bin\Debug\BSUIR.Image.PluginContracts.dll
+D:\COSI\BSUIR.Image\BSUIR.Image.Core.Plugin\bin\Debug\BSUIR.Image.PluginContracts.pdb
+D:\COSI\BSUIR.Image\BSUIR.Image.Core.Plugin\obj\Debug\BSUIR.Image.Core.Plugin.csprojResolveAssemblyReference.cache
+D:\COSI\BSUIR.Image\BSUIR.Image.Core.Plugin\obj\Debug\BSUIR.Image.Core.Plugin.dll
+D:\COSI\BSUIR.Image\BSUIR.Image.Core.Plugin\obj\Debug\BSUIR.Image.Core.Plugin.pdb

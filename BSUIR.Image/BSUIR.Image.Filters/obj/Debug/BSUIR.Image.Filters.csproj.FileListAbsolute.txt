@@ -1,0 +1,5 @@
+D:\COSI\BSUIR.Image\BSUIR.Image.Filters\bin\Debug\BSUIR.Image.Filters.dll
+D:\COSI\BSUIR.Image\BSUIR.Image.Filters\bin\Debug\BSUIR.Image.Filters.pdb
+D:\COSI\BSUIR.Image\BSUIR.Image.Filters\obj\Debug\BSUIR.Image.Filters.csprojResolveAssemblyReference.cache
+D:\COSI\BSUIR.Image\BSUIR.Image.Filters\obj\Debug\BSUIR.Image.Filters.dll
+D:\COSI\BSUIR.Image\BSUIR.Image.Filters\obj\Debug\BSUIR.Image.Filters.pdb

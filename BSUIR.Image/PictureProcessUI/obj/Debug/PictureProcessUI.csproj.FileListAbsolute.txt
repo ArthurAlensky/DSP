@@ -1,0 +1,54 @@
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP\PictureProcessUI\bin\Debug\PictureProcessUI.exe.config
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP\PictureProcessUI\obj\Debug\PictureProcessUI.Form1.resources
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP\PictureProcessUI\obj\Debug\PictureProcessUI.Properties.Resources.resources
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP\PictureProcessUI\obj\Debug\PictureProcessUI.csproj.GenerateResource.Cache
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP\PictureProcessUI\bin\Debug\PictureProcessUI.exe
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP\PictureProcessUI\bin\Debug\PictureProcessUI.pdb
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP\PictureProcessUI\obj\Debug\PictureProcessUI.exe
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP\PictureProcessUI\obj\Debug\PictureProcessUI.pdb
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP\PictureProcessUI\obj\Debug\PictureProcessUI.csprojResolveAssemblyReference.cache
+E:\ЦОСиИ\DSP\PictureProcessUI\bin\Debug\PictureProcessUI.exe.config
+E:\ЦОСиИ\DSP\PictureProcessUI\obj\Debug\PictureProcessUI.exe
+E:\ЦОСиИ\DSP\PictureProcessUI\obj\Debug\PictureProcessUI.pdb
+E:\ЦОСиИ\DSP\PictureProcessUI\bin\Debug\PictureProcessUI.exe
+E:\ЦОСиИ\DSP\PictureProcessUI\bin\Debug\PictureProcessUI.pdb
+E:\ЦОСиИ\DSP\PictureProcessUI\bin\Debug\DSP.PictureProcess.dll
+E:\ЦОСиИ\DSP\PictureProcessUI\bin\Debug\DSP.PictureProcess.pdb
+E:\ЦОСиИ\DSP\PictureProcessUI\obj\Debug\PictureProcessUI.csprojResolveAssemblyReference.cache
+E:\ЦОСиИ\DSP\PictureProcessUI\obj\Debug\PictureProcessUI.Form1.resources
+E:\ЦОСиИ\DSP\PictureProcessUI\obj\Debug\PictureProcessUI.Properties.Resources.resources
+E:\ЦОСиИ\DSP\PictureProcessUI\obj\Debug\PictureProcessUI.csproj.GenerateResource.Cache
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP\PictureProcessUI\bin\Debug\DSP.PictureProcess.dll
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP\PictureProcessUI\bin\Debug\DSP.PictureProcess.pdb
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP\PictureProcessUI\bin\Debug\DSP.Filters.dll
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP\PictureProcessUI\bin\Debug\DSP.Filters.pdb
+D:\COSI\DSP\PictureProcessUI\bin\Debug\PictureProcessUI.exe.config
+D:\COSI\DSP\PictureProcessUI\obj\Debug\PictureProcessUI.exe
+D:\COSI\DSP\PictureProcessUI\obj\Debug\PictureProcessUI.pdb
+D:\COSI\DSP\PictureProcessUI\bin\Debug\PictureProcessUI.exe
+D:\COSI\DSP\PictureProcessUI\bin\Debug\PictureProcessUI.pdb
+D:\COSI\DSP\PictureProcessUI\bin\Debug\DSP.Filters.dll
+D:\COSI\DSP\PictureProcessUI\bin\Debug\DSP.PictureProcess.dll
+D:\COSI\DSP\PictureProcessUI\bin\Debug\DSP.Filters.pdb
+D:\COSI\DSP\PictureProcessUI\bin\Debug\DSP.PictureProcess.pdb
+D:\COSI\DSP\PictureProcessUI\obj\Debug\PictureProcessUI.csprojResolveAssemblyReference.cache
+D:\COSI\DSP\PictureProcessUI\obj\Debug\PictureProcessUI.Form1.resources
+D:\COSI\DSP\PictureProcessUI\obj\Debug\PictureProcessUI.Properties.Resources.resources
+D:\COSI\DSP\PictureProcessUI\obj\Debug\PictureProcessUI.csproj.GenerateResource.Cache
+D:\COSI\BSUIR.Image\PictureProcessUI\bin\Debug\PictureProcessUI.exe.config
+D:\COSI\BSUIR.Image\PictureProcessUI\obj\Debug\PictureProcessUI.exe
+D:\COSI\BSUIR.Image\PictureProcessUI\obj\Debug\PictureProcessUI.pdb
+D:\COSI\BSUIR.Image\PictureProcessUI\bin\Debug\PictureProcessUI.exe
+D:\COSI\BSUIR.Image\PictureProcessUI\bin\Debug\PictureProcessUI.pdb
+D:\COSI\BSUIR.Image\PictureProcessUI\bin\Debug\BSUIR.Image.Core.dll
+D:\COSI\BSUIR.Image\PictureProcessUI\bin\Debug\BSUIR.Image.Core.Plugin.dll
+D:\COSI\BSUIR.Image\PictureProcessUI\bin\Debug\BSUIR.Image.Filters.dll
+D:\COSI\BSUIR.Image\PictureProcessUI\bin\Debug\BSUIR.Image.PluginContracts.dll
+D:\COSI\BSUIR.Image\PictureProcessUI\bin\Debug\BSUIR.Image.Core.Plugin.pdb
+D:\COSI\BSUIR.Image\PictureProcessUI\bin\Debug\BSUIR.Image.Core.pdb
+D:\COSI\BSUIR.Image\PictureProcessUI\bin\Debug\BSUIR.Image.Filters.pdb
+D:\COSI\BSUIR.Image\PictureProcessUI\bin\Debug\BSUIR.Image.PluginContracts.pdb
+D:\COSI\BSUIR.Image\PictureProcessUI\obj\Debug\PictureProcessUI.csprojResolveAssemblyReference.cache
+D:\COSI\BSUIR.Image\PictureProcessUI\obj\Debug\PictureProcessUI.Form1.resources
+D:\COSI\BSUIR.Image\PictureProcessUI\obj\Debug\PictureProcessUI.Properties.Resources.resources
+D:\COSI\BSUIR.Image\PictureProcessUI\obj\Debug\PictureProcessUI.csproj.GenerateResource.Cache
