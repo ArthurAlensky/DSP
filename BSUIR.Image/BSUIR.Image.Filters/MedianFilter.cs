@@ -17,16 +17,18 @@ namespace BSUIR.Image.Filters
                 {
                     var pixels =  this.GetPixels(image, x, y);
                     pixels.Sort((pixel1, pixel2) => { return pixel1.GetBrightness().CompareTo(pixel2.GetBrightness()); });
-                    if (pixels[4].GetBrightness() == pixels[0].GetBrightness())
-                    {
-                        pixels[0] = pixels[1];
-                    }
-                    if (pixels[4].GetBrightness() == pixels[8].GetBrightness())
-                    {
-                        pixels[0] = pixels[7];
-                    }
+                    //if (pixels[4].GetBrightness() == pixels[0].GetBrightness())
+                    //{
+                    //    pixels[0] = pixels[1];
+                    //}
+                    //if (pixels[4].GetBrightness() == pixels[8].GetBrightness())
+                    //{
+                    //    pixels[0] = pixels[7];
+                    //}
 
                     this.SetPixels(transformed, x, y, pixels);
+                    //transformed.SetPixel(x, y, pixels[4]);
+
                 }
             }
             return transformed;

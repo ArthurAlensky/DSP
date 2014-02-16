@@ -52,3 +52,20 @@ D:\COSI\BSUIR.Image\PictureProcessUI\obj\Debug\PictureProcessUI.csprojResolveAss
 D:\COSI\BSUIR.Image\PictureProcessUI\obj\Debug\PictureProcessUI.Form1.resources
 D:\COSI\BSUIR.Image\PictureProcessUI\obj\Debug\PictureProcessUI.Properties.Resources.resources
 D:\COSI\BSUIR.Image\PictureProcessUI\obj\Debug\PictureProcessUI.csproj.GenerateResource.Cache
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\BSUIR.Image\PictureProcessUI\bin\Debug\PictureProcessUI.exe.config
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\BSUIR.Image\PictureProcessUI\obj\Debug\PictureProcessUI.exe
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\BSUIR.Image\PictureProcessUI\obj\Debug\PictureProcessUI.pdb
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\BSUIR.Image\PictureProcessUI\bin\Debug\PictureProcessUI.exe
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\BSUIR.Image\PictureProcessUI\bin\Debug\PictureProcessUI.pdb
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\BSUIR.Image\PictureProcessUI\bin\Debug\BSUIR.Image.Core.dll
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\BSUIR.Image\PictureProcessUI\bin\Debug\BSUIR.Image.Core.Plugin.dll
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\BSUIR.Image\PictureProcessUI\bin\Debug\BSUIR.Image.Filters.dll
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\BSUIR.Image\PictureProcessUI\bin\Debug\BSUIR.Image.PluginContracts.dll
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\BSUIR.Image\PictureProcessUI\bin\Debug\BSUIR.Image.Core.Plugin.pdb
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\BSUIR.Image\PictureProcessUI\bin\Debug\BSUIR.Image.Core.pdb
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\BSUIR.Image\PictureProcessUI\bin\Debug\BSUIR.Image.Filters.pdb
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\BSUIR.Image\PictureProcessUI\bin\Debug\BSUIR.Image.PluginContracts.pdb
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\BSUIR.Image\PictureProcessUI\obj\Debug\PictureProcessUI.csprojResolveAssemblyReference.cache
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\BSUIR.Image\PictureProcessUI\obj\Debug\PictureProcessUI.Form1.resources
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\BSUIR.Image\PictureProcessUI\obj\Debug\PictureProcessUI.Properties.Resources.resources
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\BSUIR.Image\PictureProcessUI\obj\Debug\PictureProcessUI.csproj.GenerateResource.Cache

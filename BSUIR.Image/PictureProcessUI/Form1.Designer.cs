@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pbSource = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -39,25 +36,28 @@
             this.openToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pbTransformed = new System.Windows.Forms.PictureBox();
-            this.chHistogram = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnProcess = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tbThreshold = new System.Windows.Forms.TextBox();
+            this.numTreshold = new System.Windows.Forms.NumericUpDown();
             this.tbAdditions = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbMultiplications = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tbDivirgations = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.pbHelp = new System.Windows.Forms.PictureBox();
+            this.MedianFilterButton = new System.Windows.Forms.Button();
+            this.BinarizationButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTransformed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chHistogram)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTreshold)).BeginInit();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHelp)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -126,31 +126,13 @@
             this.pbTransformed.TabIndex = 0;
             this.pbTransformed.TabStop = false;
             // 
-            // chHistogram
-            // 
-            this.chHistogram.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.chHistogram.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chHistogram.Legends.Add(legend1);
-            this.chHistogram.Location = new System.Drawing.Point(364, 38);
-            this.chHistogram.Name = "chHistogram";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "TransformedPicture";
-            this.chHistogram.Series.Add(series1);
-            this.chHistogram.Size = new System.Drawing.Size(429, 304);
-            this.chHistogram.TabIndex = 4;
-            this.chHistogram.Text = "Histogram";
-            // 
             // btnProcess
             // 
             this.btnProcess.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnProcess.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnProcess.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnProcess.Location = new System.Drawing.Point(12, 418);
+            this.btnProcess.Location = new System.Drawing.Point(12, 442);
             this.btnProcess.Name = "btnProcess";
             this.btnProcess.Size = new System.Drawing.Size(1130, 23);
             this.btnProcess.TabIndex = 5;
@@ -160,25 +142,31 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.tbThreshold);
+            this.groupBox1.Controls.Add(this.BinarizationButton);
+            this.groupBox1.Controls.Add(this.MedianFilterButton);
+            this.groupBox1.Controls.Add(this.numTreshold);
             this.groupBox1.Location = new System.Drawing.Point(15, 345);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(237, 67);
+            this.groupBox1.Size = new System.Drawing.Size(237, 91);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
-            // tbThreshold
+            // numTreshold
             // 
-            this.tbThreshold.Location = new System.Drawing.Point(131, 19);
-            this.tbThreshold.Name = "tbThreshold";
-            this.tbThreshold.Size = new System.Drawing.Size(100, 20);
-            this.tbThreshold.TabIndex = 0;
-            this.tbThreshold.Text = "0.9";
+            this.numTreshold.Location = new System.Drawing.Point(111, 20);
+            this.numTreshold.Name = "numTreshold";
+            this.numTreshold.Size = new System.Drawing.Size(120, 20);
+            this.numTreshold.TabIndex = 0;
+            this.numTreshold.Value = new decimal(new int[] {
+            90,
+            0,
+            0,
+            0});
             // 
             // tbAdditions
             // 
-            this.tbAdditions.Location = new System.Drawing.Point(123, 448);
+            this.tbAdditions.Location = new System.Drawing.Point(126, 471);
             this.tbAdditions.Name = "tbAdditions";
             this.tbAdditions.ReadOnly = true;
             this.tbAdditions.Size = new System.Drawing.Size(100, 20);
@@ -188,7 +176,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Yellow;
-            this.label1.Location = new System.Drawing.Point(67, 451);
+            this.label1.Location = new System.Drawing.Point(70, 474);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 13);
             this.label1.TabIndex = 11;
@@ -198,7 +186,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Yellow;
-            this.label2.Location = new System.Drawing.Point(49, 477);
+            this.label2.Location = new System.Drawing.Point(47, 500);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 13);
             this.label2.TabIndex = 13;
@@ -206,7 +194,7 @@
             // 
             // tbMultiplications
             // 
-            this.tbMultiplications.Location = new System.Drawing.Point(123, 474);
+            this.tbMultiplications.Location = new System.Drawing.Point(126, 497);
             this.tbMultiplications.Name = "tbMultiplications";
             this.tbMultiplications.ReadOnly = true;
             this.tbMultiplications.Size = new System.Drawing.Size(100, 20);
@@ -216,7 +204,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Yellow;
-            this.label3.Location = new System.Drawing.Point(49, 505);
+            this.label3.Location = new System.Drawing.Point(55, 526);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 13);
             this.label3.TabIndex = 15;
@@ -224,19 +212,51 @@
             // 
             // tbDivirgations
             // 
-            this.tbDivirgations.Location = new System.Drawing.Point(123, 502);
+            this.tbDivirgations.Location = new System.Drawing.Point(126, 523);
             this.tbDivirgations.Name = "tbDivirgations";
             this.tbDivirgations.ReadOnly = true;
             this.tbDivirgations.Size = new System.Drawing.Size(100, 20);
             this.tbDivirgations.TabIndex = 14;
             // 
-            // dataGridView1
+            // panel3
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(402, 78);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView1.TabIndex = 16;
+            this.panel3.BackColor = System.Drawing.Color.Red;
+            this.panel3.Controls.Add(this.pbHelp);
+            this.panel3.Location = new System.Drawing.Point(392, 38);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(346, 304);
+            this.panel3.TabIndex = 16;
+            // 
+            // pbHelp
+            // 
+            this.pbHelp.BackColor = System.Drawing.Color.White;
+            this.pbHelp.Image = ((System.Drawing.Image)(resources.GetObject("pbHelp.Image")));
+            this.pbHelp.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbHelp.InitialImage")));
+            this.pbHelp.Location = new System.Drawing.Point(3, 3);
+            this.pbHelp.Name = "pbHelp";
+            this.pbHelp.Size = new System.Drawing.Size(340, 298);
+            this.pbHelp.TabIndex = 1;
+            this.pbHelp.TabStop = false;
+            // 
+            // MedianFilterButton
+            // 
+            this.MedianFilterButton.Location = new System.Drawing.Point(6, 62);
+            this.MedianFilterButton.Name = "MedianFilterButton";
+            this.MedianFilterButton.Size = new System.Drawing.Size(75, 23);
+            this.MedianFilterButton.TabIndex = 1;
+            this.MedianFilterButton.Text = "Filter";
+            this.MedianFilterButton.UseVisualStyleBackColor = true;
+            this.MedianFilterButton.Click += new System.EventHandler(this.MedianFilterButton_Click);
+            // 
+            // BinarizationButton
+            // 
+            this.BinarizationButton.Location = new System.Drawing.Point(6, 17);
+            this.BinarizationButton.Name = "BinarizationButton";
+            this.BinarizationButton.Size = new System.Drawing.Size(75, 23);
+            this.BinarizationButton.TabIndex = 2;
+            this.BinarizationButton.Text = "Binarize";
+            this.BinarizationButton.UseVisualStyleBackColor = true;
+            this.BinarizationButton.Click += new System.EventHandler(this.BinarizationButton_Click);
             // 
             // Form1
             // 
@@ -244,7 +264,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlText;
             this.ClientSize = new System.Drawing.Size(1154, 555);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tbDivirgations);
             this.Controls.Add(this.label2);
@@ -253,7 +273,6 @@
             this.Controls.Add(this.tbAdditions);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnProcess);
-            this.Controls.Add(this.chHistogram);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panel1);
@@ -266,10 +285,10 @@
             this.menuStrip1.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbTransformed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chHistogram)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTreshold)).EndInit();
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbHelp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,7 +303,6 @@
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pbTransformed;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chHistogram;
         private System.Windows.Forms.Button btnProcess;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox tbAdditions;
@@ -293,8 +311,11 @@
         private System.Windows.Forms.TextBox tbMultiplications;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbDivirgations;
-        private System.Windows.Forms.TextBox tbThreshold;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.PictureBox pbHelp;
+        private System.Windows.Forms.NumericUpDown numTreshold;
+        private System.Windows.Forms.Button MedianFilterButton;
+        private System.Windows.Forms.Button BinarizationButton;
     }
 }
 

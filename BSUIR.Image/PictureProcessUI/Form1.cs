@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.IO;
 using System.Collections.Generic;
 using System.Drawing;
@@ -13,11 +14,15 @@ namespace PictureProcessUI
 {
     public partial class Form1 : Form
     {
+
+        protected Bitmap _image;
+
         public Form1()
         {
             InitializeComponent();
             pbSource.SizeMode = PictureBoxSizeMode.Zoom;
             pbTransformed.SizeMode = PictureBoxSizeMode.Zoom;
+            pbHelp.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -42,6 +47,7 @@ namespace PictureProcessUI
                         using (sourcePicture)
                         {
                             pbSource.Image = new Bitmap(sourcePicture);
+                            _image = new Bitmap(sourcePicture);
                         }
                     }
                 }
@@ -51,12 +57,23 @@ namespace PictureProcessUI
 
         private void btnProcess_Click(object sender, EventArgs e)
         {
-            var src = (Bitmap) pbSource.Image;
-            var afterMedian = new MedianFilter().Filter(src);
-            var binarized = Picture.ToBinary(afterMedian, Convert.ToDouble( tbThreshold.Text ));
-            pbTransformed.Image = binarized;
-            var labels = Picture.Labeling(binarized);
-            //dataGridView1.DataSource = labels;
+            var labelizer = new Picture() { Image = _image };
+
+            var thread = new Thread(labelizer.Labeling, 10000000);
+            thread.Start();
+        }
+
+        private void MedianFilterButton_Click(object sender, EventArgs e)
+        {
+            _image = new MedianFilter().Filter(_image);
+            pbTransformed.Image = _image;
+            
+        }
+
+        private void BinarizationButton_Click(object sender, EventArgs e)
+        {
+            _image = Picture.ToBinary(_image, (double)numTreshold.Value / 100);
+            pbTransformed.Image = _image;
         }
 
     }

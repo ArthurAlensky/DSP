@@ -5,3 +5,10 @@ D:\COSI\BSUIR.Image\BSUIR.Image.Core.Plugin\bin\Debug\BSUIR.Image.PluginContract
 D:\COSI\BSUIR.Image\BSUIR.Image.Core.Plugin\obj\Debug\BSUIR.Image.Core.Plugin.csprojResolveAssemblyReference.cache
 D:\COSI\BSUIR.Image\BSUIR.Image.Core.Plugin\obj\Debug\BSUIR.Image.Core.Plugin.dll
 D:\COSI\BSUIR.Image\BSUIR.Image.Core.Plugin\obj\Debug\BSUIR.Image.Core.Plugin.pdb
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\BSUIR.Image\BSUIR.Image.Core.Plugin\bin\Debug\BSUIR.Image.Core.Plugin.dll
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\BSUIR.Image\BSUIR.Image.Core.Plugin\bin\Debug\BSUIR.Image.Core.Plugin.pdb
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\BSUIR.Image\BSUIR.Image.Core.Plugin\bin\Debug\BSUIR.Image.PluginContracts.dll
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\BSUIR.Image\BSUIR.Image.Core.Plugin\bin\Debug\BSUIR.Image.PluginContracts.pdb
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\BSUIR.Image\BSUIR.Image.Core.Plugin\obj\Debug\BSUIR.Image.Core.Plugin.csprojResolveAssemblyReference.cache
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\BSUIR.Image\BSUIR.Image.Core.Plugin\obj\Debug\BSUIR.Image.Core.Plugin.dll
+E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\BSUIR.Image\BSUIR.Image.Core.Plugin\obj\Debug\BSUIR.Image.Core.Plugin.pdb

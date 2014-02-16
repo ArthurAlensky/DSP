@@ -4,6 +4,12 @@ namespace BSUIR.Image.Core.Plugin.CommandHelpers
 {
     public class Picture
     {
+        public Bitmap Image { set; get; }
+
+        private int[,] _labels;
+
+        private int _l;
+
         public static Bitmap ToBinary(Bitmap image, double b)
         {
             var result = new Bitmap(image.Width, image.Height);
@@ -19,36 +25,38 @@ namespace BSUIR.Image.Core.Plugin.CommandHelpers
             return result;
         }
 
-        public static int[,] Labeling(Bitmap image)
+        public void Labeling()
         {
-            int L = 1;
-            int[,] labels = new int[image.Width, image.Height];
-            for (int y = 0; y < image.Height; y++)
+            _l = 1;
+            _labels = new int[Image.Width, Image.Height];
+            for (int y = 0; y < Image.Height; y++)
             {
-                for (int x = 0; x < image.Width; x++)
+                for (int x = 0; x < Image.Width; x++)
                 {
-                    Fill(image, labels, x, y, L++);
+                    _l++;
+                    Fill( x, y);
                 }
             }
-            return labels;
         }
 
-        private static void Fill(Bitmap image, int[,] labels, int x, int y, int L)
+        private void Fill(int x, int y)
         {
-            if (labels[x,y] == 0 && image.GetPixel(x, y).GetBrightness() == 1)
+            var pixel = Image.GetPixel(x, y);
+            var brightness = pixel.GetBrightness();
+            if (_labels[x, y] == 0 && brightness == 1)
             {
-                labels[x,y] = L;
+                _labels[x,y] = _l;
                 if (x > 0)
-                    Fill(image, labels, x - 1, y, L);
+                    Fill(x - 1, y);
 
-                if (x < image.Width - 1)
-                    Fill(image, labels, x + 1, y, L);
+                if (x < Image.Width - 1)
+                    Fill(x + 1, y);
 
                 if (y > 0)
-                    Fill(image, labels, x, y - 1, L);
+                    Fill(x, y - 1);
 
-                if (y < image.Height - 1)
-                    Fill(image, labels, x, y + 1, L);
+                if (y < Image.Height - 1)
+                    Fill(x, y + 1);
             }
         }
     }

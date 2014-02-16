@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ErosionFilter.cs" />
     <Compile Include="IFilter.cs" />
     <Compile Include="LogCorrelationFilter.cs" />
     <Compile Include="MedianFilter.cs" />
