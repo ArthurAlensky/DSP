@@ -41,11 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandHelpers\Params.cs" />
     <Compile Include="CommandHelpers\Picture.cs" />
     <Compile Include="Photo\Binarization.cs" />
     <Compile Include="Photo\Filtering.cs" />
     <Compile Include="Photo\NumOfObjects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\ParamsUtility.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

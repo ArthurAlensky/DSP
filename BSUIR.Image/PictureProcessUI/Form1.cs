@@ -16,10 +16,14 @@ namespace PictureProcessUI
     {
 
         protected Bitmap _image;
+        protected Picture _processor;
 
         public Form1()
         {
             InitializeComponent();
+
+            _processor = new Picture();
+
             pbSource.SizeMode = PictureBoxSizeMode.Zoom;
             pbTransformed.SizeMode = PictureBoxSizeMode.Zoom;
             pbHelp.SizeMode = PictureBoxSizeMode.Zoom;
@@ -57,10 +61,7 @@ namespace PictureProcessUI
 
         private void btnProcess_Click(object sender, EventArgs e)
         {
-            var labelizer = new Picture() { Image = _image };
-
-            var thread = new Thread(labelizer.Labeling, 10000000);
-            thread.Start();
+            _processor.Labeling();
         }
 
         private void MedianFilterButton_Click(object sender, EventArgs e)
@@ -72,7 +73,7 @@ namespace PictureProcessUI
 
         private void BinarizationButton_Click(object sender, EventArgs e)
         {
-            _image = Picture.ToBinary(_image, (double)numTreshold.Value / 100);
+            _image = _processor.ToBinary(_image, (double)numTreshold.Value / 100);
             pbTransformed.Image = _image;
         }
 
