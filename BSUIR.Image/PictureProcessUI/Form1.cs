@@ -63,22 +63,35 @@ namespace PictureProcessUI
         private void btnProcess_Click(object sender, EventArgs e)
         {
             _processor.Labeling();
-            var parametres = _processor.GetParams();
-            var classes = parametres.Keys.Select(param => param).ToList();
+            var parametres = _processor.GetParams().Where(param => param.Value.Area > 700).ToDictionary( val => val.Key, val=> val.Value );
+            var classes = parametres.Select(param => param.Key).ToList();
             ParamsUtility.Clasterisation(classes, parametres);
+
+            var class1 = parametres.Where(obj => obj.Value.ClassID == 0).Select(obj=>obj.Value);
+            var class2 = parametres.Where(obj => obj.Value.ClassID == 1).Select(obj => obj.Value);
+
         }
 
         private void MedianFilterButton_Click(object sender, EventArgs e)
         {
-            _image = new MedianFilter().Filter(_image);
-            pbTransformed.Image = _image;
-            
+            for (int i = 0; i < 30; i++)
+            {
+                _image = new MedianFilter().Filter(_image);
+                pbTransformed.Image = _image;
+            }
+
         }
 
         private void BinarizationButton_Click(object sender, EventArgs e)
         {
             _image = _processor.ToBinary(_image, (double)numTreshold.Value / 100);
             pbTransformed.Image = _image;
+
+            for (int i = 0; i < 0; i++)
+            {
+                _image = new MedianFilter().Filter(_image);
+                pbTransformed.Image = _image;
+            }
         }
 
     }

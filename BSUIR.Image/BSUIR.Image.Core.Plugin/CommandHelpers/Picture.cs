@@ -223,12 +223,12 @@ namespace BSUIR.Image.Core.Plugin.CommandHelpers
                     }
                 }
 
-            var delete = parametres.Where(param => param.Value.Area < 100 ).ToList();
+            /*var delete = parametres.Where(param => param.Value.Area < 100 ).ToList();
 
             foreach (var param in delete)
             {
                 parametres.Remove(param.Key);
-            }
+            }*/
 
             foreach (var parametr in parametres)
             {

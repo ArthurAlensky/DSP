@@ -68,10 +68,14 @@ namespace BSUIR.Image.Core.Plugin.Utilities
             {
                 var classes1 = new List<int>();
                 var classes2 = new List<int>();
+
                 classes1.Add(cl1);
                 classes.Remove(cl1);
+                parameters[cl1].ClassID = 0;
+
                 classes2.Add(cl2);
                 classes.Remove(cl2);
+                parameters[cl2].ClassID = 1;
 
                 foreach (var s in classes)
                 {
@@ -91,9 +95,15 @@ namespace BSUIR.Image.Core.Plugin.Utilities
                                         Math.Pow(parameters[s].Perimeter - parameters[cl2].Perimeter, 2)
                                         );
                     if (far1 <= far2)
+                    {
                         classes1.Add(s);
+                        parameters[s].ClassID = 0;
+                    }
                     else
+                    {
                         classes2.Add(s);
+                        parameters[s].ClassID = 1;
+                    }
                 }
 
                 classes.Clear();
