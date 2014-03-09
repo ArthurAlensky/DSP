@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
+using BSUIR.Image.Core.Plugin.Utilities;
 
 namespace BSUIR.Image.Core.Plugin.CommandHelpers
 {
@@ -59,6 +61,7 @@ namespace BSUIR.Image.Core.Plugin.CommandHelpers
                     _correction.Y = j;
                     do
                     {
+                        _stackOverFlow = false;
                         Fill(_correction.X, _correction.Y, grad, 0);
                     } while (_stackOverFlow);
                 }
@@ -70,6 +73,11 @@ namespace BSUIR.Image.Core.Plugin.CommandHelpers
         public void Fill(int x, int y, int grad, int iteration)
         {
 
+            if (_stackOverFlow)
+            {
+                return;
+            }
+
             _stackOverFlow = iteration++ == _iterationsMax;
 
             _correction.X = x;
@@ -77,13 +85,14 @@ namespace BSUIR.Image.Core.Plugin.CommandHelpers
 
             if (_labels[x,y] == 0 && _image[x,y] == 1 && !_stackOverFlow)
             {
+                _labels[x, y] = grad;
                 if (x > 0)
                     Fill(x - 1, y, grad, iteration);
 
                 if (x < _width - 1)
                     Fill(x + 1, y, grad, iteration);
 
-                if (y > 0 )
+                if (y > 0)
                     Fill(x, y - 1, grad, iteration);
 
                 if (y < _height - 1)
@@ -183,6 +192,11 @@ namespace BSUIR.Image.Core.Plugin.CommandHelpers
                 {
                     if (_labels[i, j] > 1)
                     {
+                        if (!parametres.ContainsKey(_labels[i, j]))
+                        {
+                            parametres.Add(_labels[i, j], new Params());
+                        }
+
                         parametres[_labels[i, j]].Area++;
 
                         parametres[_labels[i, j]].AverageX += i;
@@ -209,11 +223,21 @@ namespace BSUIR.Image.Core.Plugin.CommandHelpers
                     }
                 }
 
+            var delete = parametres.Where(param => param.Value.Area < 100 ).ToList();
+
+            foreach (var param in delete)
+            {
+                parametres.Remove(param.Key);
+            }
+
             foreach (var parametr in parametres)
             {
                 parametr.Value.AverageX /= parametr.Value.Area;
                 parametr.Value.AverageY /= parametr.Value.Area;
             }
+
+            ParamsUtility.GetDensity(parametres);
+            ParamsUtility.GetElongation(_labels,_width,_height,parametres);
 
             return parametres;
         }

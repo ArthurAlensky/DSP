@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using System.IO;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows;
 using System.Windows.Forms;
-
+using BSUIR.Image.Core.Plugin.Utilities;
 using BSUIR.Image.Filters;
 using BSUIR.Image.Core.Plugin;
 using BSUIR.Image.Core.Plugin.CommandHelpers;
@@ -62,6 +63,9 @@ namespace PictureProcessUI
         private void btnProcess_Click(object sender, EventArgs e)
         {
             _processor.Labeling();
+            var parametres = _processor.GetParams();
+            var classes = parametres.Keys.Select(param => param).ToList();
+            ParamsUtility.Clasterisation(classes, parametres);
         }
 
         private void MedianFilterButton_Click(object sender, EventArgs e)

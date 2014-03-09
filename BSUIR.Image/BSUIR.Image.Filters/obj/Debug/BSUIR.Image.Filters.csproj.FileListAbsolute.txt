@@ -13,3 +13,8 @@ E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\DSP\BSUIR.Image\BSUIR.Image.Fi
 E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\DSP\BSUIR.Image\BSUIR.Image.Filters\obj\Debug\BSUIR.Image.Filters.csprojResolveAssemblyReference.cache
 E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\DSP\BSUIR.Image\BSUIR.Image.Filters\obj\Debug\BSUIR.Image.Filters.dll
 E:\LIBRARY_Visual Studio 2010\ЦОСи\DSP-master\DSP\BSUIR.Image\BSUIR.Image.Filters\obj\Debug\BSUIR.Image.Filters.pdb
+D:\UNIVERSITY\DSP\BSUIR.Image\BSUIR.Image.Filters\bin\Debug\BSUIR.Image.Filters.dll
+D:\UNIVERSITY\DSP\BSUIR.Image\BSUIR.Image.Filters\bin\Debug\BSUIR.Image.Filters.pdb
+D:\UNIVERSITY\DSP\BSUIR.Image\BSUIR.Image.Filters\obj\Debug\BSUIR.Image.Filters.csprojResolveAssemblyReference.cache
+D:\UNIVERSITY\DSP\BSUIR.Image\BSUIR.Image.Filters\obj\Debug\BSUIR.Image.Filters.dll
+D:\UNIVERSITY\DSP\BSUIR.Image\BSUIR.Image.Filters\obj\Debug\BSUIR.Image.Filters.pdb
