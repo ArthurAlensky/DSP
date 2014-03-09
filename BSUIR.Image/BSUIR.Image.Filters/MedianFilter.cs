@@ -26,8 +26,8 @@ namespace BSUIR.Image.Filters
                     //    pixels[0] = pixels[7];
                     //}
 
-                    this.SetPixels(transformed, x, y, pixels);
-                    //transformed.SetPixel(x, y, pixels[4]);
+                    //this.SetPixels(transformed, x, y, pixels);
+                    transformed.SetPixel(x, y, pixels[4]);
 
                 }
             }

@@ -49,8 +49,6 @@ namespace BSUIR.Image.Core.Plugin.CommandHelpers
             int grad = 2;
             Random rand = new Random();
 
-            Dictionary<int, Color> colors = new Dictionary<int, Color>();
-
             _labels = new int[_width, _height];
 
             for (int i = 0; i < _width; i++)
@@ -79,16 +77,16 @@ namespace BSUIR.Image.Core.Plugin.CommandHelpers
 
             if (_labels[x,y] == 0 && _image[x,y] == 1 && !_stackOverFlow)
             {
-                if (x > 0 && !_stackOverFlow)
+                if (x > 0)
                     Fill(x - 1, y, grad, iteration);
 
-                if (x < _width - 1 && !_stackOverFlow)
+                if (x < _width - 1)
                     Fill(x + 1, y, grad, iteration);
 
-                if (y > 0 && !_stackOverFlow)
+                if (y > 0 )
                     Fill(x, y - 1, grad, iteration);
 
-                if (y < _height - 1 && !_stackOverFlow)
+                if (y < _height - 1)
                     Fill(x, y + 1, grad, iteration);
             }
         }
