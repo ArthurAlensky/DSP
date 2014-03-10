@@ -3,3 +3,8 @@ D:\COSI\BSUIR.Image\BSUIR.Image.Core\bin\Debug\BSUIR.Image.Core.pdb
 D:\COSI\BSUIR.Image\BSUIR.Image.Core\obj\Debug\BSUIR.Image.Core.csprojResolveAssemblyReference.cache
 D:\COSI\BSUIR.Image\BSUIR.Image.Core\obj\Debug\BSUIR.Image.Core.dll
 D:\COSI\BSUIR.Image\BSUIR.Image.Core\obj\Debug\BSUIR.Image.Core.pdb
+D:\UNIVERSITY\DSP\BSUIR.Image\BSUIR.Image.Core\bin\Debug\BSUIR.Image.Core.dll
+D:\UNIVERSITY\DSP\BSUIR.Image\BSUIR.Image.Core\bin\Debug\BSUIR.Image.Core.pdb
+D:\UNIVERSITY\DSP\BSUIR.Image\BSUIR.Image.Core\obj\Debug\BSUIR.Image.Core.csprojResolveAssemblyReference.cache
+D:\UNIVERSITY\DSP\BSUIR.Image\BSUIR.Image.Core\obj\Debug\BSUIR.Image.Core.dll
+D:\UNIVERSITY\DSP\BSUIR.Image\BSUIR.Image.Core\obj\Debug\BSUIR.Image.Core.pdb

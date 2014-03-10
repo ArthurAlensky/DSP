@@ -46,10 +46,9 @@ namespace BSUIR.Image.Core.Plugin.CommandHelpers
         }
 
 
-        public void  Labeling()
+        public int [,] Labeling()
         {
             int grad = 2;
-            Random rand = new Random();
 
             _labels = new int[_width, _height];
 
@@ -66,9 +65,10 @@ namespace BSUIR.Image.Core.Plugin.CommandHelpers
                     } while (_stackOverFlow);
                 }
             }
+            return _labels;
         }
 
-        
+
 
         public void Fill(int x, int y, int grad, int iteration)
         {
@@ -83,7 +83,7 @@ namespace BSUIR.Image.Core.Plugin.CommandHelpers
             _correction.X = x;
             _correction.Y = y;
 
-            if (_labels[x,y] == 0 && _image[x,y] == 1 && !_stackOverFlow)
+            if (_labels[x, y] == 0 && _image[x, y] == 1 && !_stackOverFlow)
             {
                 _labels[x, y] = grad;
                 if (x > 0)
@@ -163,7 +163,7 @@ namespace BSUIR.Image.Core.Plugin.CommandHelpers
         //        if (countIterations == 1)
         //        {
         //            for (int i = 0; i < _executeList.Count; i++)
-        //                ExecuteNextFill( _executeList[i].X, _executeList[i].Y, grad, 0);
+        //                ExecuteNextFill(_executeList[i].X, _executeList[i].Y, grad, 0);
         //        }
         //    }
 
@@ -172,7 +172,7 @@ namespace BSUIR.Image.Core.Plugin.CommandHelpers
         //public void ExecuteNextFill(int x, int y, int grad, int countIterations)
         //{
         //    if (x > 0)
-        //        Fill( x - 1, y, grad, countIterations);
+        //        Fill(x - 1, y, grad, countIterations);
 
         //    if (x < _width - 1)
         //        Fill(x + 1, y, grad, countIterations);
@@ -222,13 +222,6 @@ namespace BSUIR.Image.Core.Plugin.CommandHelpers
                         }
                     }
                 }
-
-            /*var delete = parametres.Where(param => param.Value.Area < 100 ).ToList();
-
-            foreach (var param in delete)
-            {
-                parametres.Remove(param.Key);
-            }*/
 
             foreach (var parametr in parametres)
             {

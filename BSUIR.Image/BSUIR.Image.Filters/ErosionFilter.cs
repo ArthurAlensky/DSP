@@ -6,7 +6,7 @@ namespace BSUIR.Image.Filters
 {
     public class ErosionFilter : IFilter
     {
-        public Bitmap Filter(Bitmap image)
+        public Bitmap Filter(Bitmap src)
         {
 
             var core = new List<Color>() { 
@@ -17,24 +17,39 @@ namespace BSUIR.Image.Filters
                 Color.White,Color.White,Color.Black,Color.White,Color.White
             };
 
-            Bitmap transformed = new Bitmap(image.Width, image.Height);
+            var result = new Bitmap(src.Width, src.Height);
 
-            for (int y = 2; y < image.Height - 2; y++)
+            bool[,] mask = { { true, true, true }, { true, true, true }, { true, true, true } };
+            // W, H – размеры исходного и результирующего изображений
+            // MW, MH – размеры структурного множества
+            int y, x;
+            int MH = 3, MW = 3;
+            for (y = MH / 2; y < src.Height - MH / 2; y++)
             {
-                for (int x = 2; x < image.Width - 2; x++)
+                for (x = MW / 2; x < src.Width - MW / 2; x++)
                 {
-                    for (int z = 0, t = 0; z < 4; z++)
+                    int minR = 255, minG = 255, minB = 255;
+                    for (int j = -MH / 2; j <= MH / 2; j++)
                     {
-                        for (int k = 0; k < 4; k++)
+                        for (int i = -MW / 2; i <= MW / 2; i++)
                         {
-                            var color1 = core[t++] == Color.White ? 1 : 0;
-                            var color2 = image.GetPixel(x + k - 2, y + z - 2) == Color.White ? 1 : 0;
-                            transformed.SetPixel(x + k - 2, y + z - 2, color1 * color2 == 0 ? Color.Black : Color.White);
+                            if ((mask[Math.Abs(i), Math.Abs(j)]) && src.GetPixel(x + i, y + j).R < minR && src.GetPixel(x + i, y + j).G < minG && src.GetPixel(x + i, y + j).B < minB)
+                            {
+                                minR = src.GetPixel(x + i, y + j).R;
+                                minG = src.GetPixel(x + i, y + j).G;
+                                minB = src.GetPixel(x + i, y + j).B;
+                            }
                         }
+                        if (minR != 0 && minG != 0 && minB != 0)
+                        {
+
+                        }
+
+                        result.SetPixel(x, y, Color.FromArgb(minR, minG, minB));
                     }
                 }
             }
-            return transformed;
+            return result;
         }
     }
 }

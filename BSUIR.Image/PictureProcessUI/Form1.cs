@@ -62,10 +62,25 @@ namespace PictureProcessUI
 
         private void btnProcess_Click(object sender, EventArgs e)
         {
-            _processor.Labeling();
-            var parametres = _processor.GetParams().Where(param => param.Value.Area > 700).ToDictionary( val => val.Key, val=> val.Value );
+            var labels = _processor.Labeling();
+
+            var im = new Bitmap( _image.Width, _image.Height );
+
+            var parametres = _processor.GetParams().Where(param => param.Value.Area > 100).ToDictionary(val => val.Key, val => val.Value);
             var classes = parametres.Select(param => param.Key).ToList();
             ParamsUtility.Clasterisation(classes, parametres);
+
+
+            for (int i = 0; i < im.Width; i++)
+            {
+                for (int j = 0; j < im.Height; j++)
+                {
+                    im.SetPixel(i, j, labels[i, j] > 1 && parametres.ContainsKey(labels[i, j]) && parametres[labels[i, j]].Area < 1500 ? Color.Red : Color.Black);
+                }
+            }
+
+            pbTransformed.Image = im;
+
 
             var class1 = parametres.Where(obj => obj.Value.ClassID == 0).Select(obj=>obj.Value);
             var class2 = parametres.Where(obj => obj.Value.ClassID == 1).Select(obj => obj.Value);
@@ -74,9 +89,9 @@ namespace PictureProcessUI
 
         private void MedianFilterButton_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 1; i++)
             {
-                _image = new MedianFilter().Filter(_image);
+                _image = new ErosionFilter().Filter(_image);
                 pbTransformed.Image = _image;
             }
 
@@ -86,12 +101,6 @@ namespace PictureProcessUI
         {
             _image = _processor.ToBinary(_image, (double)numTreshold.Value / 100);
             pbTransformed.Image = _image;
-
-            for (int i = 0; i < 0; i++)
-            {
-                _image = new MedianFilter().Filter(_image);
-                pbTransformed.Image = _image;
-            }
         }
 
     }

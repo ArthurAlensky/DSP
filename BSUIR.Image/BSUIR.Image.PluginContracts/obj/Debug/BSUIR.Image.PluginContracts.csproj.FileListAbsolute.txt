@@ -3,3 +3,8 @@ D:\COSI\BSUIR.Image\BSUIR.Image.PluginContracts\bin\Debug\BSUIR.Image.PluginCont
 D:\COSI\BSUIR.Image\BSUIR.Image.PluginContracts\obj\Debug\BSUIR.Image.PluginContracts.csprojResolveAssemblyReference.cache
 D:\COSI\BSUIR.Image\BSUIR.Image.PluginContracts\obj\Debug\BSUIR.Image.PluginContracts.dll
 D:\COSI\BSUIR.Image\BSUIR.Image.PluginContracts\obj\Debug\BSUIR.Image.PluginContracts.pdb
+D:\UNIVERSITY\DSP\BSUIR.Image\BSUIR.Image.PluginContracts\bin\Debug\BSUIR.Image.PluginContracts.dll
+D:\UNIVERSITY\DSP\BSUIR.Image\BSUIR.Image.PluginContracts\bin\Debug\BSUIR.Image.PluginContracts.pdb
+D:\UNIVERSITY\DSP\BSUIR.Image\BSUIR.Image.PluginContracts\obj\Debug\BSUIR.Image.PluginContracts.csprojResolveAssemblyReference.cache
+D:\UNIVERSITY\DSP\BSUIR.Image\BSUIR.Image.PluginContracts\obj\Debug\BSUIR.Image.PluginContracts.dll
+D:\UNIVERSITY\DSP\BSUIR.Image\BSUIR.Image.PluginContracts\obj\Debug\BSUIR.Image.PluginContracts.pdb
