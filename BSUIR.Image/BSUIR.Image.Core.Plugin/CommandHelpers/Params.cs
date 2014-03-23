@@ -12,23 +12,23 @@ namespace BSUIR.Image.Core.Plugin.CommandHelpers
 
         public int ClassID  { get; set; }
 
-        public int Perimeter    { get; set; }
+        public double Perimeter { get; set; }
 
-        public int Area { get; set; }
+        public double Area { get; set; }
 
-        public int Density  { get; set; }
+        public double Density { get; set; }
 
-        public int AverageX { get; set; }
+        public double AverageX { get; set; }
 
-        public int AverageY { get; set; }
+        public double AverageY { get; set; }
 
         public double Elongation    { get; set; }
 
-        public int M20  { get; set; }
+        public double M20 { get; set; }
 
-        public int M02  { get; set; }
+        public double M02 { get; set; }
 
-        public int M11  { get; set; }
+        public double M11 { get; set; }
 
         public Params() 
         {

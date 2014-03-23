@@ -26,3 +26,5 @@ D:\UNIVERSITY\DSP\BSUIR.Image\BSUIR.Image.Core.Plugin\bin\Debug\BSUIR.Image.Plug
 D:\UNIVERSITY\DSP\BSUIR.Image\BSUIR.Image.Core.Plugin\obj\Debug\BSUIR.Image.Core.Plugin.dll
 D:\UNIVERSITY\DSP\BSUIR.Image\BSUIR.Image.Core.Plugin\obj\Debug\BSUIR.Image.Core.Plugin.pdb
 D:\UNIVERSITY\DSP\BSUIR.Image\BSUIR.Image.Core.Plugin\obj\Debug\BSUIR.Image.Core.Plugin.csprojResolveAssemblyReference.cache
+D:\UNIVERSITY\DSP\BSUIR.Image\BSUIR.Image.Core.Plugin\bin\Debug\BSUIR.Image.Filters.dll
+D:\UNIVERSITY\DSP\BSUIR.Image\BSUIR.Image.Core.Plugin\bin\Debug\BSUIR.Image.Filters.pdb

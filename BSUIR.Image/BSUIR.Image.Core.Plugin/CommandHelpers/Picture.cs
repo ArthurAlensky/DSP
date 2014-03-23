@@ -10,21 +10,19 @@ namespace BSUIR.Image.Core.Plugin.CommandHelpers
     {
         private static readonly int _iterationsMax = 1000;
 
-        private int _width;
-        private int _height;
-
-        private int[,] _labels;
+        public int Width { get; private set; }
+        public int Height { get; private set; }
         private int[,] _image;
+        private Dictionary<int, Color> _colors = new Dictionary<int,Color>();
 
-        private int _l;
+        public Dictionary<int, Color> ColorTable { get { return _colors; } }
+        public int[,] Labels { get { return _image; } }
 
-        private bool _stackOverFlow;
-
-        private Point _correction;
+        static List<Point> executeList = new List<Point>();
 
         public Bitmap ToBinary(Bitmap image, double b)
         {
-            var result = new Bitmap(_width = image.Width, _height = image.Height);
+            var result = new Bitmap(Width = image.Width, Height = image.Height);
             _image = new int[image.Width, image.Height];
             for (int y = 0; y < image.Height; y++)
             {
@@ -46,179 +44,124 @@ namespace BSUIR.Image.Core.Plugin.CommandHelpers
         }
 
 
-        public int [,] Labeling()
+        public void Labeling()
         {
             int grad = 2;
-
-            _labels = new int[_width, _height];
-
-            for (int i = 0; i < _width; i++)
-            {
-                for (int j = 0; j < _height; j++, grad++)
+            Random rand = new Random();
+            for (int i = 0; i < Width; i++)
+                for (int j = 0; j < Height; j++)
                 {
-                    _correction.X = i;
-                    _correction.Y = j;
-                    do
+                    if (_image[i, j] == 1)
                     {
-                        _stackOverFlow = false;
-                        Fill(_correction.X, _correction.Y, grad, 0);
-                    } while (_stackOverFlow);
+                        if (!_colors.ContainsKey(grad))
+                        {
+                            _colors.Add(grad, Color.White);
+                        }
+                        _colors[grad] = Color.FromArgb((byte)rand.Next(DateTime.Now.Millisecond) % 256,
+                            (byte)rand.Next(DateTime.Now.Millisecond) % 256, (byte)rand.Next(DateTime.Now.Millisecond) % 256);
+                        //countIterations = 0;
+                        Fill(i, j, grad, 0);
+                        grad++;
+                        executeList.Clear();
+                    }
+                }
+        }
+
+        public void Fill(int x, int y, int grad, int countIterations)
+        {
+            if (_image[x, y] == 1 && countIterations < _iterationsMax)
+            {
+                try
+                {
+                    if (countIterations == 0)
+                    {
+                        if (x > 0 && _image[x - 1, y] > 1)
+                            grad = _image[x - 1, y];
+
+                        if (x < Width - 1 && _image[x + 1, y] > 1)
+                            grad = _image[x + 1, y];
+
+                        if (y > 0 && _image[x, y - 1] > 1)
+                            grad = _image[x, y - 1];
+
+                        if (y < Height - 1 && _image[x, y + 1] > 1)
+                            grad = _image[x, y + 1];
+                    }
+
+                    _image[x, y] = grad;
+                    countIterations++;
+                    if (countIterations == _iterationsMax)
+                    {
+                        executeList.Add(new Point(x, y));
+                    }
+                }
+
+                catch (Exception)
+                {
+                    //picture.SetPixel(x, y, Color.Red);
+                }
+
+                ExecuteNextFill( x, y, grad, countIterations);
+
+                if (countIterations == 1)
+                {
+                    //countIterations = 0;
+                    for (int i = 0; i < executeList.Count; i++)
+                        ExecuteNextFill(executeList[i].X, executeList[i].Y, grad, 0);
                 }
             }
-            return _labels;
         }
 
-
-
-        public void Fill(int x, int y, int grad, int iteration)
+        public void ExecuteNextFill(int x, int y, int grad, int countIterations)
         {
+            if (x > 0)
+                Fill(x - 1, y, grad, countIterations);
 
-            if (_stackOverFlow)
-            {
-                return;
-            }
+            if (x < Width - 1)
+                Fill(x + 1, y, grad, countIterations);
 
-            _stackOverFlow = iteration++ == _iterationsMax;
+            if (y > 0)
+                Fill(x, y - 1, grad, countIterations);
 
-            _correction.X = x;
-            _correction.Y = y;
-
-            if (_labels[x, y] == 0 && _image[x, y] == 1 && !_stackOverFlow)
-            {
-                _labels[x, y] = grad;
-                if (x > 0)
-                    Fill(x - 1, y, grad, iteration);
-
-                if (x < _width - 1)
-                    Fill(x + 1, y, grad, iteration);
-
-                if (y > 0)
-                    Fill(x, y - 1, grad, iteration);
-
-                if (y < _height - 1)
-                    Fill(x, y + 1, grad, iteration);
-            }
+            if (y < Height - 1)
+                Fill(x, y + 1, grad, countIterations);
         }
-
-        //public Dictionary<int, Color> Labeling()
-        //{
-        //    int grad = 2;
-        //    Random rand = new Random();
-
-        //    Dictionary<int, Color> colors = new Dictionary<int, Color>();
-
-        //    for (int i = 0; i < _width; i++)
-        //    {
-        //        for (int j = 0; j < _height; j++)
-        //        {
-        //            if (_labels[i, j] == 1)
-        //            {
-        //                colors[grad] = Color.FromArgb((byte)rand.Next(DateTime.Now.Millisecond) % 256,
-        //                    (byte)rand.Next(DateTime.Now.Millisecond) % 256, (byte)rand.Next(DateTime.Now.Millisecond) % 256);
-
-        //                Fill(i, j, grad, 0);
-        //                grad++;
-        //                _executeList.Clear();
-        //            }
-        //        }
-        //    }
-        //    return colors;
-        //}
-
-        //public void Fill(int x, int y, int grad, int countIterations)
-        //{
-        //    if (_labels[x, y] == 1 && countIterations < _maxIteration)
-        //    {
-        //        try
-        //        {
-        //            if (countIterations == 0)
-        //            {
-        //                if (x > 0 && _labels[x - 1, y] > 1)
-        //                    grad = _labels[x - 1, y];
-
-        //                if (x < _width - 1 && _labels[x + 1, y] > 1)
-        //                    grad = _labels[x + 1, y];
-
-        //                if (y > 0 && _labels[x, y - 1] > 1)
-        //                    grad = _labels[x, y - 1];
-
-        //                if (y < _height - 1 && _labels[x, y + 1] > 1)
-        //                    grad = _labels[x, y + 1];
-        //            }
-
-        //            _labels[x, y] = grad;
-        //            countIterations++;
-        //            if (countIterations == _maxIteration)
-        //            {
-        //                _executeList.Add(new Point(x, y));
-        //            }
-        //        }
-
-        //        catch (Exception)
-        //        {
-        //        }
-
-        //        ExecuteNextFill(x, y, grad, countIterations);
-
-        //        if (countIterations == 1)
-        //        {
-        //            for (int i = 0; i < _executeList.Count; i++)
-        //                ExecuteNextFill(_executeList[i].X, _executeList[i].Y, grad, 0);
-        //        }
-        //    }
-
-        //}
-
-        //public void ExecuteNextFill(int x, int y, int grad, int countIterations)
-        //{
-        //    if (x > 0)
-        //        Fill(x - 1, y, grad, countIterations);
-
-        //    if (x < _width - 1)
-        //        Fill(x + 1, y, grad, countIterations);
-
-        //    if (y > 0)
-        //        Fill(x, y - 1, grad, countIterations);
-
-        //    if (y < _height - 1)
-        //        Fill(x, y + 1, grad, countIterations);
-        //}
 
         public Dictionary<int, Params> GetParams()
         {
             var parametres = new Dictionary<int, Params>();
-            for (int i = 0; i < _width; i++)
-                for (int j = 0; j < _height; j++)
+            for (int i = 0; i < Width; i++)
+                for (int j = 0; j < Height; j++)
                 {
-                    if (_labels[i, j] > 1)
+                    if (_image[i, j] > 1)
                     {
-                        if (!parametres.ContainsKey(_labels[i, j]))
+                        if (!parametres.ContainsKey(_image[i, j]))
                         {
-                            parametres.Add(_labels[i, j], new Params());
+                            parametres.Add(_image[i, j], new Params());
                         }
 
-                        parametres[_labels[i, j]].Area++;
+                        parametres[_image[i, j]].Area++;
 
-                        parametres[_labels[i, j]].AverageX += i;
-                        parametres[_labels[i, j]].AverageY += j;
+                        parametres[_image[i, j]].AverageX += i;
+                        parametres[_image[i, j]].AverageY += j;
 
                         bool isLast = false;
 
-                        if (i > 0 && _labels[i - 1, j] != _labels[i, j])
+                        if (i > 0 && _image[i - 1, j] != _image[i, j])
                             isLast = true;
 
-                        if (i < _width - 1 && _labels[i + 1, j] != _labels[i, j])
+                        if (i < Width - 1 && _image[i + 1, j] != _image[i, j])
                             isLast = true;
 
-                        if (j > 0 && _labels[i, j - 1] != _labels[i, j])
+                        if (j > 0 && _image[i, j - 1] != _image[i, j])
                             isLast = true;
 
-                        if (j < _height - 1 && _labels[i, j + 1] != _labels[i, j])
+                        if (j < Height - 1 && _image[i, j + 1] != _image[i, j])
                             isLast = true;
 
                         if (isLast)
                         {
-                            parametres[_labels[i, j]].Perimeter++;
+                            parametres[_image[i, j]].Perimeter++;
                         }
                     }
                 }
@@ -230,7 +173,7 @@ namespace BSUIR.Image.Core.Plugin.CommandHelpers
             }
 
             ParamsUtility.GetDensity(parametres);
-            ParamsUtility.GetElongation(_labels,_width,_height,parametres);
+            ParamsUtility.GetElongation(_image,Width,Height,parametres);
 
             return parametres;
         }

@@ -38,6 +38,8 @@
             this.pbTransformed = new System.Windows.Forms.PictureBox();
             this.btnProcess = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BinarizationButton = new System.Windows.Forms.Button();
+            this.MedianFilterButton = new System.Windows.Forms.Button();
             this.numTreshold = new System.Windows.Forms.NumericUpDown();
             this.tbAdditions = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,8 +49,7 @@
             this.tbDivirgations = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pbHelp = new System.Windows.Forms.PictureBox();
-            this.MedianFilterButton = new System.Windows.Forms.Button();
-            this.BinarizationButton = new System.Windows.Forms.Button();
+            this.ClusterNumber = new System.Windows.Forms.NumericUpDown();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -58,6 +59,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numTreshold)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbHelp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ClusterNumber)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -142,19 +144,40 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.ClusterNumber);
             this.groupBox1.Controls.Add(this.BinarizationButton);
             this.groupBox1.Controls.Add(this.MedianFilterButton);
             this.groupBox1.Controls.Add(this.numTreshold);
             this.groupBox1.Location = new System.Drawing.Point(15, 345);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(237, 91);
+            this.groupBox1.Size = new System.Drawing.Size(340, 91);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
+            // BinarizationButton
+            // 
+            this.BinarizationButton.Location = new System.Drawing.Point(6, 17);
+            this.BinarizationButton.Name = "BinarizationButton";
+            this.BinarizationButton.Size = new System.Drawing.Size(75, 23);
+            this.BinarizationButton.TabIndex = 2;
+            this.BinarizationButton.Text = "Binarize";
+            this.BinarizationButton.UseVisualStyleBackColor = true;
+            this.BinarizationButton.Click += new System.EventHandler(this.BinarizationButton_Click);
+            // 
+            // MedianFilterButton
+            // 
+            this.MedianFilterButton.Location = new System.Drawing.Point(6, 62);
+            this.MedianFilterButton.Name = "MedianFilterButton";
+            this.MedianFilterButton.Size = new System.Drawing.Size(75, 23);
+            this.MedianFilterButton.TabIndex = 1;
+            this.MedianFilterButton.Text = "Filter";
+            this.MedianFilterButton.UseVisualStyleBackColor = true;
+            this.MedianFilterButton.Click += new System.EventHandler(this.MedianFilterButton_Click);
+            // 
             // numTreshold
             // 
-            this.numTreshold.Location = new System.Drawing.Point(111, 20);
+            this.numTreshold.Location = new System.Drawing.Point(87, 19);
             this.numTreshold.Name = "numTreshold";
             this.numTreshold.Size = new System.Drawing.Size(120, 20);
             this.numTreshold.TabIndex = 0;
@@ -238,25 +261,17 @@
             this.pbHelp.TabIndex = 1;
             this.pbHelp.TabStop = false;
             // 
-            // MedianFilterButton
+            // ClusterNumber
             // 
-            this.MedianFilterButton.Location = new System.Drawing.Point(6, 62);
-            this.MedianFilterButton.Name = "MedianFilterButton";
-            this.MedianFilterButton.Size = new System.Drawing.Size(75, 23);
-            this.MedianFilterButton.TabIndex = 1;
-            this.MedianFilterButton.Text = "Filter";
-            this.MedianFilterButton.UseVisualStyleBackColor = true;
-            this.MedianFilterButton.Click += new System.EventHandler(this.MedianFilterButton_Click);
-            // 
-            // BinarizationButton
-            // 
-            this.BinarizationButton.Location = new System.Drawing.Point(6, 17);
-            this.BinarizationButton.Name = "BinarizationButton";
-            this.BinarizationButton.Size = new System.Drawing.Size(75, 23);
-            this.BinarizationButton.TabIndex = 2;
-            this.BinarizationButton.Text = "Binarize";
-            this.BinarizationButton.UseVisualStyleBackColor = true;
-            this.BinarizationButton.Click += new System.EventHandler(this.BinarizationButton_Click);
+            this.ClusterNumber.Location = new System.Drawing.Point(214, 19);
+            this.ClusterNumber.Name = "ClusterNumber";
+            this.ClusterNumber.Size = new System.Drawing.Size(120, 20);
+            this.ClusterNumber.TabIndex = 3;
+            this.ClusterNumber.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // Form1
             // 
@@ -289,6 +304,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numTreshold)).EndInit();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbHelp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ClusterNumber)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -316,6 +332,7 @@
         private System.Windows.Forms.NumericUpDown numTreshold;
         private System.Windows.Forms.Button MedianFilterButton;
         private System.Windows.Forms.Button BinarizationButton;
+        private System.Windows.Forms.NumericUpDown ClusterNumber;
     }
 }
 

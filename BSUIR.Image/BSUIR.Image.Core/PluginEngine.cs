@@ -8,5 +8,6 @@ namespace BSUIR.Image.Core
 {
     public class PluginEngine
     {
+
     }
 }

@@ -37,81 +37,110 @@ namespace BSUIR.Image.Core.Plugin.Utilities
             }
         }
 
-        public static List<int> Clasterisation(List<int> classes, Dictionary<int, Params> parameters)
+        public static void KMeans(Dictionary<int, Params> parameters, int k)
         {
-            double far, far1, far2;
-            double maxFar = 0;
-            int cl1 = 0, cl2 = 0;
+            var rand = new Random();
+            var clusters = new Dictionary<int, List<int>>();
+            var prevClusters = new Dictionary<int, List<int>>();
+            var mediums = new List<Params>();
+            var colors = new List<System.Drawing.Color> 
+            { 
+                System.Drawing.Color.Red, 
+                System.Drawing.Color.Black, 
+                System.Drawing.Color.ForestGreen, 
+                System.Drawing.Color.HotPink,
+                System.Drawing.Color.DarkBlue,
+                System.Drawing.Color.LightYellow
+            };
 
-            foreach (var s in classes)
+            var labels = parameters.Keys.ToList();
+
+            for (int i = 0; i < k; i++ )
             {
-                foreach (var s1 in classes)
-                {
-                    far = Math.Sqrt(Math.Pow(parameters[s].Area - parameters[s1].Area, 2) +
-                                        Math.Pow(parameters[s].AverageX - parameters[s1].AverageX, 2) +
-                                        Math.Pow(parameters[s].AverageY - parameters[s1].AverageY, 2) +
-                                        Math.Pow(parameters[s].Density - parameters[s1].Density, 2) +
-                                        Math.Pow(parameters[s].Elongation - parameters[s1].Elongation, 2) +
-                                        Math.Pow(parameters[s].Perimeter - parameters[s1].Perimeter, 2)
-                                        );
-
-                    if (far > maxFar)
-                    {
-                        maxFar = far;
-                        cl1 = s;
-                        cl2 = s1;
-                    }
-                }
+                var medium = parameters[labels[rand.Next(labels.Count - 1)]];
+                medium.ClassID = i;
+                medium.Color = colors[i];
+                mediums.Add(medium);
+                clusters.Add(i, new List<int>());
+                prevClusters.Add(i, new List<int>());
             }
 
-            if (maxFar > 50)
+            while (true)
             {
-                var classes1 = new List<int>();
-                var classes2 = new List<int>();
 
-                classes1.Add(cl1);
-                classes.Remove(cl1);
-                parameters[cl1].ClassID = 0;
-
-                classes2.Add(cl2);
-                classes.Remove(cl2);
-                parameters[cl2].ClassID = 1;
-
-                foreach (var s in classes)
+                foreach (var param in parameters)
                 {
-                    far1 = Math.Sqrt(Math.Pow(parameters[s].Area - parameters[cl1].Area, 2) +
-                                        Math.Pow(parameters[s].AverageX - parameters[cl1].AverageX, 2) +
-                                        Math.Pow(parameters[s].AverageY - parameters[cl1].AverageY, 2) +
-                                        Math.Pow(parameters[s].Density - parameters[cl1].Density, 2) +
-                                        Math.Pow(parameters[s].Elongation - parameters[cl1].Elongation, 2) +
-                                        Math.Pow(parameters[s].Perimeter - parameters[cl1].Perimeter, 2)
-                                        );
+                    var distanceMin = double.MaxValue;
 
-                    far2 = Math.Sqrt(Math.Pow(parameters[s].Area - parameters[cl2].Area, 2) +
-                                        Math.Pow(parameters[s].AverageX - parameters[cl2].AverageX, 2) +
-                                        Math.Pow(parameters[s].AverageY - parameters[cl2].AverageY, 2) +
-                                        Math.Pow(parameters[s].Density - parameters[cl2].Density, 2) +
-                                        Math.Pow(parameters[s].Elongation - parameters[cl2].Elongation, 2) +
-                                        Math.Pow(parameters[s].Perimeter - parameters[cl2].Perimeter, 2)
-                                        );
-                    if (far1 <= far2)
+                    foreach (var medium in mediums)
                     {
-                        classes1.Add(s);
-                        parameters[s].ClassID = 0;
+                        var distance = Math.Sqrt(Math.Pow(param.Value.Area - medium.Area, 2) +
+                                            Math.Pow(param.Value.AverageX - medium.AverageX, 2) +
+                                            Math.Pow(param.Value.AverageY - medium.AverageY, 2) +
+                                            Math.Pow(param.Value.Density - medium.Density, 2) +
+                                            Math.Pow(param.Value.Elongation - medium.Elongation, 2) +
+                                            Math.Pow(param.Value.Perimeter - medium.Perimeter, 2)
+                                            );
+
+                        if (distance < distanceMin)
+                        {
+                            distanceMin = distance;
+                            param.Value.ClassID = medium.ClassID;
+                            param.Value.Color = medium.Color;
+                        }
                     }
-                    else
-                    {
-                        classes2.Add(s);
-                        parameters[s].ClassID = 1;
-                    }
+                    clusters[param.Value.ClassID].Add(param.Key);
                 }
 
-                classes.Clear();
-                classes.AddRange(Clasterisation(classes1, parameters));
-                classes.AddRange(Clasterisation(classes2, parameters));
+                bool equal = true;
+
+                for (int i = 0; i < k; i++)
+                {
+                    if ( !clusters[i].SequenceEqual( prevClusters[i] ) )
+                    {
+                        equal = false;
+                        break;
+                    }
+
+                }
+
+                if (equal)
+                {
+                    break;
+                }
+
+                mediums.Clear();
+
+                for (int i = 0; i < k; i++)
+                {
+                    prevClusters[i].Clear();
+                    prevClusters[i].AddRange( clusters[i] );
+
+                    var cluster = clusters[i];
+
+                    var medium = new Params
+                    {
+                        Color = System.Drawing.Color.Violet,
+                        ClassID = i
+                    };
+                    foreach (var key in cluster)
+                    {
+                        var obj = parameters[key];
+
+                        medium.Color = obj.Color;
+                        medium.Area += obj.Area / cluster.Count;
+                        medium.AverageX += obj.AverageX / cluster.Count;
+                        medium.AverageY += obj.AverageY / cluster.Count;
+                        medium.Density += obj.Density / cluster.Count;
+                        medium.Elongation += obj.Elongation / cluster.Count;
+                        medium.Perimeter += obj.Perimeter / cluster.Count;
+                    }
+                    mediums.Add(medium);
+                    cluster.Clear();
+                }
+
             }
-            return classes;
         }
-
     }
 }
+
